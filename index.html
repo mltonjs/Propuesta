@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para ti 💗</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      overflow: hidden;
+      background: black;
+    }
+
+    .pantalla {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .oculto {
+      transform: translateX(100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .img-top, .img-bottom {
+      width: 100%;
+      height: 45vh;
+      object-fit: cover;
+    }
+
+    .contenido {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.35);
+      color: white;
+    }
+
+    h1 {
+      font-size: clamp(26px, 6vw, 45px);
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: clamp(16px, 4vw, 24px);
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 14px 40px;
+      font-size: 18px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      margin: 8px;
+    }
+
+    .btn-si {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    .btn-no {
+  background: white;
+  color: #ff4d6d;
+  position: absolute;
+  left: 46%;
+  top: 60%;
+}
+
+
+    .tocar {
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+      background: rgba(255, 255, 255, 0.4);
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .img-unica {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Pantalla 1 -->
+  <div id="p1" class="pantalla">
+    <img src="img/top1.jpg" class="img-top">
+    <img src="img/bottom1.jpg" class="img-bottom">
+
+    <div class="contenido">
+      <h1>Hola mi Gringa 💕</h1>
+      <h4>Te elijo con los ojos abiertos, sabiendo que amar no siempre es fácil.<br> Te elijo en tus luces y en tus sombras, en tus días de calma y en tus días de caos Jaja
+        <br>Te elijo no porque te necesite, sino porque contigo la vida se siente más bonita.<br> No busco perfección, busco presencia.
+        <br>Te escojo en lo simple: en las salidas, en las risas sin motivo, en los silencios que no incomodan.
+        <br>Te escojo incluso cuando dudo, incluso cuando la vida se complica, porque el amor real no se trata de sentir siempre lo mismo, sino de elegir quedarse incluso cuando cuesta.
+        Y si la vida me diera mil opciones, igual te escogería a ti, una y otra vez</h4>
+      <div class="tocar" onclick="siguiente(2)">Tocar ➡️</div>
+    </div>
+  </div>
+
+  <!-- Pantalla 2 -->
+<div id="p2" class="pantalla oculto">
+    <img src="img/solo2.jpg" class="img-unica">
+  
+    <div class="contenido">
+      <h1>Quiero decirte algo…</h1>
+      <h4>Me gusta la paz que me das cuando hablas despacio, me gusta como se siente tu presencia incluso 
+        cuando no dices nada ,no es solo que me atraigas ,es que hay algo en ti que me calma 
+        ,algo que me da curiosidad ,algo que me recuerda que todavía puedo sentir sin miedo ,
+        me gustas porque no intentas ser más de lo que eres ,y aún así son esfuerzo llenas el
+         espacio, me gustas en tu versión más simple ,en tus gestos sin guión ,en tu silencio
+          que todo se entiende sin hablar, nose si es destino, conexión o coincidencia ,pero 
+          hay algo en ti que resuena con lo que busco y no necesito explicarlo ,solo sentirlo 
+          ,nose que tienes ,pero haces que todo dentro de mi quiera quedarse un ratito más...💕</h4>
+      <div class="tocar" onclick="siguiente(3)">Tocar ➡️</div>
+    </div>
+  </div>
+  
+
+  <!-- Pantalla 3 -->
+  <div id="p3" class="pantalla oculto">
+    <img src="img/top3.jpg" class="img-top">
+    <img src="img/bottom3.jpg" class="img-bottom">
+
+    <div class="contenido">
+      <h1>¿Quieres ser mi Enamorada? 💖</h1>
+      <button class="btn btn-si" onclick="aceptar()">Sí 💘</button>
+      <button id="btnNo" class="btn btn-no" onmouseover="moverNo()">No 💔</button>
+    </div>
+  </div>
+
+  <!-- Pantalla 4 -->
+  <div id="p4" class="pantalla oculto">
+    <img src="img/top4.jpg" class="img-top">
+    <img src="img/bottom4.jpg" class="img-bottom">
+
+    <div class="contenido">
+      <h1>Ahora somos algo oficial 💞</h1>
+      <h4>Gracias por entregarme la parte de ti que pocos conocen.<br>
+        Gracias por abrirte <br>Gracias por elegir mis manos, para sostener lo que te pesa, y mi presencia para descansar un momento del ruido.
+        <br>Gracias por confiar en mí, incluso en los días en que ni tú confías en ti. 
+        <br>Confía en mí siempre porque si hay algo de lo que estoy seguro, es que: nunca voy a soltar la parte de ti que tuvo el valor de confiar en mí primero. </h4>
+    </div>
+  </div>
+
+  <script>
+    function siguiente(num) {
+      for (let i = 1; i <= 4; i++) {
+        document.getElementById("p" + i).classList.add("oculto");
+      }
+      document.getElementById("p" + num).classList.remove("oculto");
+    }
+
+    function moverNo() {
+      const btn = document.getElementById("btnNo");
+      const maxX = window.innerWidth - 150;
+      const maxY = window.innerHeight - 80;
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      btn.style.left = x + "px";
+      btn.style.top = y + "px";
+    }
+
+    function aceptar() {
+      siguiente(4);
+    }
+  </script>
+<audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
+  
+  <script>
+    document.body.addEventListener("click", function () {
+      const audio = document.getElementById("musica");
+      audio.play();
+    }, { once: true });
+  </script>
+  
+</body>
+</html>
